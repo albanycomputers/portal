@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * A short description of this module.
+ */
+
+/**
+ * Implements hook_config_info().
+ */
+function portal_config_info() {
+  return array(
+    'portal.settings' => array(
+      'label' => t('portal settings'),
+      'group' => t('Configuration'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function portal_menu() {
+  return array(
+    'admin/config/system/portal' => array(
+      'title' => 'portal',
+      'description' => 'Configure portal.',
+      'page callback' => 'backdrop_get_form',
+      'page arguments' => array('portal_configuration_form'),
+      'access arguments' => array('administer portal'),
+      'file' => 'portal.admin.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function portal_permission() {
+  return array(
+    'administer portal' => array(
+      'title' => t('Administer portal'),
+    ),
+  );
+}

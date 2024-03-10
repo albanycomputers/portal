@@ -1,0 +1,19 @@
+type = module
+name = portal
+description = Portal is a membership site for courses and discussions.
+backdrop = 1.x
+
+; Link to the module's configuration page.
+configure = admin/config/system/portal
+
+; Add custom CSS & JS files.
+stylesheets[all][] = css/portal.css
+scripts[] = js/portal.js
+
+; List any dependencies here.
+
+
+; Find suggested packages and tags at: https://docs.backdropcms.org/documentation/module-packages-and-tags
+package = Portal
+tags[] = Tuition
+tags[] = Discussion
