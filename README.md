@@ -2,7 +2,7 @@ Portal
 ========
 Portal is a membership site for courses and discussions.
 
-Portal enables you to host a membership site where you customers can interact
+Portal enables you to host a membership site where your customers can interact
 with each other.  Create tuition and courses with discussion rooms and
 file sharing.
 

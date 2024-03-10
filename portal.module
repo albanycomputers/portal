@@ -42,3 +42,24 @@ function portal_permission() {
     ),
   );
 }
+
+
+/**
+ * Implements hook_entity_info().
+ */
+function portal_entity_info() {
+
+  $info = array();
+
+  $info['portal'] = array(
+    'label' => t('Portal'),
+    'base table' => 'portal_group',
+    'entity keys' => array(
+      'id' => 'portal_gid',
+      'label' => 'Portal Group',
+    ),
+    'module' => 'portal',
+  );
+
+  return $info;
+}

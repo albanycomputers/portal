@@ -3,16 +3,51 @@
  * @file
  * Install, update, and uninstall functions for the portal module.
  */
+function acsgames_schema() {
+  $schema = array();
 
-/**
- * Upgrade from Drupal 7.
- */
-function portal_update_1000() {
-  // Convert D7 variables to config.
-  $config = config('portal.settings');
-  $config->set('opinion_of_backdrop', update_variable_get('portal_opinion_drupal', 'Awesome!'));
-  $config->save();
+  $schema['portal_group'] = array(
+  'description' => 'Content group header.',
 
-  // Delete D7 variables.
-  update_variable_del('portal_opinion_drupal');
+    'fields' => array(
+      'portal_gid' => array(
+        'description' => t('ID for individual groups.'),
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'portal_gstatus' => array(
+        'description' => t('Status of the group, public, privet, hidden etc...'),
+        'type' => 'int',
+        'size' => 'small',
+        'not null' => FALSE,
+      ),
+
+      'portal_gname' => array(
+        'description' => t('Name of the groups.'),
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+      ),
+
+      'portal_gdesc' => array(
+        'description' => t('Group description.'),
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+      ),
+
+      /* I've added the member count to the main datatable because it won't get
+      updated constantly and it's one less thing to count when displaying the
+      groups statistics. */
+      'portal_gmemcount' => array(
+        'description' => t('Membership count'),
+        'type' => 'int',
+        'size' => 'medium',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('portal_gid'),
+  );
 }
