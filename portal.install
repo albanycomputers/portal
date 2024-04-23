@@ -3,11 +3,15 @@
  * @file
  * Install, update, and uninstall functions for the portal module.
  */
-function acsgames_schema() {
+
+ /**
+ * Implements hook_schema().
+ */
+function portal_schema() {
   $schema = array();
 
   $schema['portal_group'] = array(
-  'description' => 'Content group header.',
+  'description' => 'Portal group header.',
 
     'fields' => array(
       'portal_gid' => array(
@@ -49,5 +53,51 @@ function acsgames_schema() {
       ),
     ),
     'primary key' => array('portal_gid'),
+    'indexes' => array(
+      'portal_gid' => array('portal_gid'),
+      'portal_gname' => array('portal_gname'),
+    ),
   );
+
+  return $schema;
 }
+
+/**
+ * Implements hook_entity_info().
+ */
+/* function portal_entity_info() {
+  // Entity_info for the Portal Group table
+  $return = array(
+    'portal_group' => array(
+      'label' => t('Portal Groups'),
+      'entity class' => 'portal',
+      'controller class' => 'PortalController',
+      'base table' => 'portal_group',
+      'fieldable' => TRUE,
+      'uri callback' => 'portal_uri',
+      'entity keys' => array(
+        'id' => 'portal_gid',
+        'bundle' => 'portal',
+      ),
+      'bundle keys' => array(
+          'bundle' => 'portal',
+        ),
+      'static cache' => FALSE,
+      'bundles' => array(
+          'first_example_bundle' => array(
+            'label' => 'First example bundle',
+            // 'admin' key is used by the Field UI to provide field and
+            // display UI pages.
+            'admin' => array(
+              'path' => 'admin/structure/portal/manage',
+              'access arguments' => array('administer portal entities'),
+            ),
+          ),
+        ),
+    ),
+
+  );
+
+    return $return;
+}
+*/

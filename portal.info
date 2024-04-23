@@ -1,10 +1,11 @@
 type = module
-name = portal
+name = Portal
 description = Portal is a membership site for courses and discussions.
 backdrop = 1.x
 
 ; Link to the module's configuration page.
-configure = admin/config/system/portal
+configure = /admin/config/system/portal
+
 
 ; Add custom CSS & JS files.
 stylesheets[all][] = css/portal.css
